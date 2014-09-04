@@ -1,0 +1,53 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+.back {
+	@extend %nav-back;
+}
+
+.hero-wrapper {
+	height: 350px;
+
+	// Needed to position back arrow nav
+	position: relative;
+
+	.row {
+		position: relative;
+		height: 100%;
+
+		.content {
+			position: absolute;
+			bottom: 10%;
+
+			.text {
+				width: 100%;
+
+				@media #{$medium-up} {
+					width: 70%;
+				}
+				
+				h1, p {
+					color: $white;
+				}
+				p {
+					font-style: italic;
+				}
+			}
+		}
+	}
+}
+
+// Writing Background Styling
+
+&.writing-title-example {
+	.hero-wrapper {
+		@include background($filename: '../images/writings/slideshows/example/1.jpg', $bgcolor: rgba($grey,.5), $bgattachment: fixed);
+	}
+}
+&.things-you-dont-learn-in-college {
+	.hero-wrapper {
+		@include background($filename: '../images/writings/things-you-dont-learn-in-college/hero.jpg', $bgcolor: rgba($grey,.5), $bgattachment: fixed);
+	}
+}

@@ -1,0 +1,50 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+.blockquote {
+	@extend %content-section-styling;
+	@extend %writings-headings;
+	padding: $writingSectionPadding 0 0;
+
+	// If section is first/last, use alternate padding values
+	&.first {
+		padding-top: $sectionPadding;
+	}
+	&.last {
+		padding-bottom: $sectionPadding;
+	}
+	
+	.text {
+		@include grid-column(12);
+
+		@media #{$medium-up} {
+			@include grid-column(7);
+		}
+
+		// Elimate excess padding on last paragraph
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.quote {
+		@include grid-column(12);
+		padding-top: $sectionPadding/2;
+
+		@media #{$medium-up} {
+			@include grid-column(5);
+			padding-top: 0;
+		}
+
+		blockquote {
+			color: $orange;
+			font-size: 1.5em;
+			line-height: 1.3;
+			border: none;
+		}
+		cite {
+			margin-top: $sectionListPadding;
+		}
+	}
+}

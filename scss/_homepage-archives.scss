@@ -1,0 +1,33 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+.archives {
+	@extend %content-section-styling;
+	background: $lightGrey;
+
+	p:last-child {
+		padding: $writingSectionPadding 0 0;
+		margin: 0;
+		font-style: italic;
+	}
+
+	.column {
+		@include grid-column(12);
+		padding-top: $sectionPadding/2;
+		
+		@media #{$medium-up} {
+			@include grid-column(4);
+			padding-top: $writingSectionPadding;
+		}
+		p {
+			padding: 0;
+			margin: 0;
+			line-height: 1;
+		}
+		h4 {
+			margin: .5em 0 0;
+		}
+	}
+}

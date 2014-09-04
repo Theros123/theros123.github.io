@@ -1,0 +1,55 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+.back {
+	@extend %nav-back;
+}
+
+.hero-wrapper {
+	// Need double quotes and spacing between numbers
+	@include calc(height, "100% - 60px");
+	@include background($filename: '../images/about/hero.png', $bgcolor: rgba($grey,.5), $bgattachment: fixed);
+
+	// Fall back to prevent clipping when browser height is too small
+	min-height: 350px;
+
+	@media #{$medium-up} {
+		max-height: 500px;
+	}
+
+	// Needed to position back arrow nav
+	position: relative;
+
+
+
+	.row {
+		position: relative;
+		height: 100%;
+
+		.content {
+			position: absolute;
+			bottom: 10%;
+
+			.text {
+				width: 100%;
+
+				@media #{$medium-up} {
+					width: 80%;
+				}
+				
+				h1, p {
+					color: $white;
+				}
+				p {
+					font-style: italic;
+
+					&:before {
+						content: "\2014 \0020";
+					}
+				}
+			}
+		}
+	}
+}

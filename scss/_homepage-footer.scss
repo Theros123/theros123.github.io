@@ -1,0 +1,8 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+#footer {
+	@extend %footer;
+}

@@ -1,0 +1,76 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+.image-slider {
+	@extend %content-section-styling;
+	padding: 0;
+	margin: 3em 0 0;
+	background: $lightGrey;
+
+	// If section is first/last, use alternate padding values
+	&.first {
+		padding-top: $sectionPadding;
+	}
+	&.last {
+		padding-bottom: $sectionPadding;
+	}
+	
+	a.orbit-next, a.orbit-prev {
+		background: rgba($black,.3);
+
+		&:hover {
+			background: rgba($black,.7);
+		}
+	}
+
+	.orbit-slides-container {
+		// Force slider to be specific height
+		height: 320px;
+		overflow: hidden;
+		position: relative;
+
+		@media #{$medium-up} {
+			height: 400px;
+		}
+		@media #{$large-up} {
+			height: 500px;
+		}
+
+		li {
+			height: 100%;
+
+			img {
+				width: 100%;
+				
+				@media #{$large-up} {
+					position: absolute;
+					left: 0;
+					max-width: 75%;
+				}
+			}
+			.orbit-caption {
+				font-size: 1em;
+				width: inherit;
+				height: auto;
+				padding: 1em $sectionColumnGutter;
+				background: rgba(0,0,0,.9);
+				position: inherit;
+
+				@media #{$medium-up} {
+					background: rgba(0,0,0,.3);
+					position: absolute;
+				}
+				@media #{$large-up} {
+					right: 0;
+					height: 100%;
+					width: 25%;
+					background: inherit;
+					color: $black;
+					padding: 10em 2.5em 0 1.5em;
+				}
+			}
+		}
+	}
+}

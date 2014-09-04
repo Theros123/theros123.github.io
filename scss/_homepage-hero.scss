@@ -1,0 +1,115 @@
+// Homepage hero section styling
+
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+// Parent to force browser height and width for calc to work
+.hero-overflow {
+	min-height: inherit;
+
+	@media #{$medium-up} { 	
+		// Fall back to prevent clipping when browser height is too small
+		// Need to have this value change for responsive
+		min-height: 350px;
+	}
+	@media #{$large-up} {
+		width: 100%;
+		min-height: 500px;
+		max-height: 600px;
+	}
+}
+
+// Element that calc is being called upon
+.hero-wrapper {
+	// Need double quotes and spacing between numbers
+	overflow: hidden;
+
+	@media #{$large-up} {
+		@include calc(height, "600px - 150px");
+	}
+
+	.row {
+		.image-wrapper {
+			@include grid-column(0);
+			display: none;
+				
+			@media #{$medium-up} { 
+				@include grid-column(6);
+				padding: 0;
+				display: inherit;			
+			}
+
+			@media #{$large-up} { 
+				@include grid-column(7);
+			}
+
+			img {
+				padding: 1em 4.5em 0; 
+
+				@media #{$medium-up} {
+					padding: 3em 1.5em 0 1.5em;
+					min-height: 335px;
+				}
+				@media #{$large-up} {
+					padding: 1em 0 0;
+				}
+			}
+
+			&.mobile-column {
+				@include grid-column(12);
+				display: block;
+
+				@media #{$medium-up} {
+					display: none;
+				}
+			}
+		}
+		.text {
+			@include grid-column(12);
+			padding: $sectionPadding/2 $sectionColumnGutter 0;
+
+			@media #{$medium-up} { 
+				@include grid-column(6);
+				padding-top: 7%;
+			}
+			@media #{$large-up} {
+				@include grid-column(5);
+				padding-top: 5em;
+			}
+
+			h1, h3, h4 {
+				color: $black;
+			}
+			h1 {
+				margin: 0;
+			}
+			h4 {
+				margin-bottom: 0;
+				line-height: 1;
+			}
+		}
+		.homepage-nav {
+			@include grid-row();
+			@extend %content-section-columns;
+			list-style: none;
+			// Overwriting default margins
+			margin: 1em 0 0 0;
+
+			li {
+				@include grid-column(6);
+				padding: 0 .5em 0 0;
+
+				i {
+					// To force text to the right of icon always
+					padding-bottom: 1em;
+					text-align: left;
+				}
+				p {
+					margin-left: 45px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+// Basic SASS Column Styling
+.content {
+	@include grid-column(12);
+}
+
+.companies {
+	@extend %content-section-styling;
+	background: $lightGrey;
+
+	@media #{$medium-up} {
+		// To offset transform 
+		max-height: 220px;
+	}
+
+	.column {
+		@include grid-column(6);
+		@extend %content-section-columns;
+		@extend %vertical-align;
+		margin-top: 2.5em;
+
+		@media #{$medium-up} {
+			@include grid-column(2.4);
+		}
+	}
+} 
